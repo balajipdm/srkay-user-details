@@ -1,0 +1,20 @@
+<h2 class="mb-3">User Details</h2>
+<button type="button" class="btn btn-info mb-2" (click)="addUser()">Add User</button>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th class="hidden">Username</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td class="hidden">{{user}}</td>
+      <td>
+        <button class="btn btn-info" (click)="goToUser('view', user)">View</button>
+        <button class="btn btn-info ml-2" (click)="goToUser('edit', user)">Edit</button>
+        <button class="btn btn-danger ml-2" (click)="deleteUser(user)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

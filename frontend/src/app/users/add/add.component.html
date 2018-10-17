@@ -1,0 +1,57 @@
+<h2 class="mb-3">{{ fAction }} User</h2>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" *ngIf="!userName">
+    <label for="userName">Username:</label>
+    <input formControlName="userName" placeholder="Username" name="userName" class="form-control" id="userName"
+      [ngClass]="{ 'is-invalid': f.userName.touched && f.userName.errors }">
+    <div *ngIf="f.userName.touched && f.userName.errors" class="invalid-feedback">
+      <div *ngIf="f.userName.errors.required">Username is required</div>
+      <div *ngIf="f.userName.errors.pattern">Username must be Length at least 3 characters and maximum length of 15 </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName"
+      [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
+    <div *ngIf="f.firstName.touched && f.firstName.errors" class="invalid-feedback">
+      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName"
+      [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
+    <div *ngIf="f.lastName.touched && f.lastName.errors" class="invalid-feedback">
+      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email"
+      [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+    <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required">Email is required</div>
+      <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone Number:</label>
+    <input type="phone" formControlName="phone" placeholder="Phone" name="email" class="form-control" id="phone"
+      [ngClass]="{ 'is-invalid': f.phone.touched && f.phone.errors }">
+    <div *ngIf="f.phone.touched && f.phone.errors" class="invalid-feedback">
+      <div *ngIf="f.phone.errors.required">Phone Number is required</div>
+      <div *ngIf="f.phone.errors.pattern">Phone Number must be 10 digit number</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address:</label>
+    <textarea formControlName="address" placeholder="Address" name="address" class="form-control" id="address"
+      [ngClass]="{ 'is-invalid': f.address.touched && f.address.errors }">
+    </textarea>
+    <div *ngIf="f.address.touched && f.address.errors" class="invalid-feedback">
+      <div *ngIf="f.address.errors.required">Address is required</div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="addForm.invalid" class="btn btn-success">{{ fAction }} User</button>
+  <button type="button" class="btn btn-danger ml-3" routerLink="/users">Cancel</button>
+</form>
