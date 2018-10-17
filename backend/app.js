@@ -46,9 +46,11 @@ router.route('/users').post((req, res) => {
         message: `Failed to Add User, Username: ${userName} already exists.`
       });
     } else {
-      fs.writeFile(fileName, JSON.stringify(req.body));
-      res.status(200).json({
-        message: 'User Added Successfully'
+      fs.writeFile(fileName, JSON.stringify(req.body), (err) => {
+        if (err) throw err;
+        res.status(200).json({
+          message: 'User Added Successfully'
+        });
       });
     }
   });
