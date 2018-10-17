@@ -1,5 +1,5 @@
 <h2 class="mb-3">{{ fAction }} User</h2>
-<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div class="form-group" *ngIf="!userName">
     <label for="userName">Username:</label>
     <input formControlName="userName" placeholder="Username" name="userName" class="form-control" id="userName"
@@ -52,6 +52,6 @@
       <div *ngIf="f.address.errors.required">Address is required</div>
     </div>
   </div>
-  <button type="submit" [disabled]="addForm.invalid" class="btn btn-success">{{ fAction }} User</button>
+  <button type="submit" [disabled]="userForm.invalid" class="btn btn-success">{{ fAction }} User</button>
   <button type="button" class="btn btn-danger ml-3" routerLink="/users">Cancel</button>
 </form>

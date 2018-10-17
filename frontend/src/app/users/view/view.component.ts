@@ -6,7 +6,7 @@ import { UserService } from '../user.service';
 import { User } from '../user.model';
 
 @Component({
-  selector: 'app-view',
+  selector: 'users-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
@@ -27,9 +27,6 @@ export class ViewComponent implements OnInit, OnDestroy {
           this.subscription = this.userService.getUser(params.userName).subscribe(
             (user) => {
               this.user = user;            
-            },
-            (error) => {
-              console.error(error);
             }
           );
         }

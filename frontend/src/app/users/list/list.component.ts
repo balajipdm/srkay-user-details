@@ -42,16 +42,12 @@ export class ListComponent implements OnInit {
           if (response.message) {
             this.ngFlashMessageService.showFlashMessage({
               messages: [response.message],
-              type: 'success'
+              type: 'success',
+              dismissible: true,
+              timeout: 5000
             });
             this.users = this.users.filter(u => u !== userName);
           }
-        },
-        (error) => {
-          this.ngFlashMessageService.showFlashMessage({
-            messages: [error.error.message],
-            type: 'danger'
-          });
         }
       );
     }

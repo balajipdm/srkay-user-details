@@ -8,12 +8,27 @@ const app = express();
 const router = express.Router();
 const fs = require('fs');
 
-app.use(cors());
-app.use(bodyParser.json());
-
 const filePath = (userName) => {
   return `${USERS_DIR}/${userName}.json`;
-}
+};
+
+const fileExistsIntercept = (req, res, next) => {
+  const userName = req.params.userName;
+  if (userName) {
+    fs.exists(filePath(userName), (exists) => {
+      if (!exists) {
+        res.status(400).json({
+          message: `Failed to Get User, Username: ${userName} not exists.`
+        });
+      } else {
+        next();
+      }
+    });
+  }
+};
+
+app.use(cors());
+app.use(bodyParser.json());
 
 router.route('/users').get((req, res) => {
   fs.readdir(USERS_DIR, (err, files) => {
@@ -39,58 +54,28 @@ router.route('/users').post((req, res) => {
   });
 });
 
-router.route('/users/:userName').get((req, res) => {
-  const userName = req.params.userName;
-  const fileName = filePath(userName);
-  fs.exists(fileName, (exists) => {
-    if (exists) {
-      fs.readFile(filePath(userName), (err, data) => {
-        if (err) throw err;
-        res.status(200).json(JSON.parse(data));
-      });
-    } else {
-      res.status(400).json({
-        message: `Failed to Get User, Username: ${userName} not exists.`
-      });
-    }
+router.route('/users/:userName').get(fileExistsIntercept, (req, res) => {
+  fs.readFile(filePath(req.params.userName), (err, data) => {
+    if (err) throw err;
+    res.status(200).json(JSON.parse(data));
   });
 });
 
-router.route('/users/:userName').put((req, res) => {
-  const userName = req.params.userName;
-  const fileName = filePath(userName);
-  fs.exists(fileName, (exists) => {
-    if (exists) {
-      fs.writeFile(fileName, JSON.stringify(req.body), (err) => {
-        if (err) throw err;
-        res.status(200).json({
-          message: 'User Updated Successfully'
-        });
-      });
-    } else {
-      res.status(400).json({
-        message: `Failed to Update User, Username: ${userName} not exists.`
-      });
-    }
+router.route('/users/:userName').put(fileExistsIntercept, (req, res) => {
+  fs.writeFile(filePath(req.params.userName), JSON.stringify(req.body), (err) => {
+    if (err) throw err;
+    res.status(200).json({
+      message: 'User Updated Successfully'
+    });
   });
 });
 
-router.route('/users/:userName').delete((req, res) => {
-  const userName = req.params.userName;
-  const fileName = filePath(userName);
-  fs.exists(fileName, (exists) => {
-    if (exists) {
-      fs.unlink(filePath(req.params.userName), (err) => {
-        if (err) throw err;
-        res.status(200).json({
-          message: 'User Deleted Successfully'
-        });
-      });
-    } else {
-      res.status(400).json({
-        message: `Failed to Delete User, Username: ${userName} not exists.`
-      });
-    }
+router.route('/users/:userName').delete(fileExistsIntercept, (req, res) => {
+  fs.unlink(filePath(req.params.userName), (err) => {
+    if (err) throw err;
+    res.status(200).json({
+      message: 'User Deleted Successfully'
+    });
   });
 });
 

@@ -1,17 +1,17 @@
 <h2 class="mb-3">View User</h2>
 <dl class="row">
-  <dt class="col-md-3">User Name</dt>
-  <dd class="col-md-9">{{user?.userName}}</dd>
-  <dt class="col-md-3">First Name</dt>
-  <dd class="col-md-9">{{user?.firstName}}</dd>
-  <dt class="col-md-3">Last Name</dt>
-  <dd class="col-md-9">{{user?.lastName}}</dd>
-  <dt class="col-md-3">Email</dt>
-  <dd class="col-md-9">{{user?.email}}</dd>
-  <dt class="col-md-3">Phone</dt>
-  <dd class="col-md-9">{{user?.phone}}</dd>
-  <dt class="col-md-3">Address</dt>
-  <dd class="col-md-9">{{user?.address}}</dd>
+  <dt class="col-md-2">User Name</dt>
+  <dd class="col-md-10">{{user?.userName}}</dd>
+  <dt class="col-md-2">First Name</dt>
+  <dd class="col-md-10">{{user?.firstName}}</dd>
+  <dt class="col-md-2">Last Name</dt>
+  <dd class="col-md-10">{{user?.lastName}}</dd>
+  <dt class="col-md-2">Email</dt>
+  <dd class="col-md-10">{{user?.email}}</dd>
+  <dt class="col-md-2">Phone</dt>
+  <dd class="col-md-10">{{user?.phone}}</dd>
+  <dt class="col-md-2">Address</dt>
+  <dd class="col-md-10">{{user?.address}}</dd>
 </dl>
 <button type="button" class="btn btn-default mr-3" routerLink="/users">Back</button>
 <button type="button" class="btn btn-info" [routerLink]="['/users/edit', user?.userName]">Edit User</button>
