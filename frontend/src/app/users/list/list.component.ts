@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteUser(userName: string): void {
-    if (confirm("Are you sure to delete " + userName)) {
+    if (confirm(`Are you sure to delete User: ${userName} ?`)) {
       this.userService.deleteUser(userName).subscribe(
         (response: any) => {
           if (response.message) {

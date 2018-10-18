@@ -1,6 +1,6 @@
-<h2 class="mb-3">View User</h2>
+<h2 class="mb-3">View User - {{user?.userName}}</h2>
 <dl class="row">
-  <dt class="col-md-2">User Name</dt>
+  <dt class="col-md-2">Username</dt>
   <dd class="col-md-10">{{user?.userName}}</dd>
   <dt class="col-md-2">First Name</dt>
   <dd class="col-md-10">{{user?.firstName}}</dd>
@@ -13,5 +13,5 @@
   <dt class="col-md-2">Address</dt>
   <dd class="col-md-10">{{user?.address}}</dd>
 </dl>
-<button type="button" class="btn btn-default mr-3" routerLink="/users">Back</button>
-<button type="button" class="btn btn-info" [routerLink]="['/users/edit', user?.userName]">Edit User</button>
+<button type="button" class="btn btn-info" [routerLink]="['../../edit', user?.userName]">Edit User</button>
+<button type="button" class="btn btn-secondary ml-3" routerLink="../../">Back</button>

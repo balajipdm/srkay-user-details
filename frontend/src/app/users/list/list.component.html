@@ -3,13 +3,13 @@
 <table class="table table-striped mt-3">
   <thead>
     <tr>
-      <th class="hidden">Username</th>
+      <th class="align-middle">Username</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td class="hidden">{{user}}</td>
+      <td class="align-middle">{{user}}</td>
       <td>
         <button class="btn btn-info" (click)="goToUser('view', user)">View</button>
         <button class="btn btn-info ml-2" (click)="goToUser('edit', user)">Edit</button>

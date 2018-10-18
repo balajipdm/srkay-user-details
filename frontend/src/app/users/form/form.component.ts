@@ -53,7 +53,7 @@ export class FormComponent implements OnInit, OnDestroy {
               dismissible: true,
               timeout: 5000
             });
-            this.router.navigate(['/users/list']);
+            this.router.navigate(['../../']);
           }
         }
       );
