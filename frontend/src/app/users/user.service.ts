@@ -10,7 +10,7 @@ export class UserService {
   baseUrl: string = 'http://localhost:4000/api/users';
 
   getUsers() {
-    return this.http.get<any>(this.baseUrl);
+    return this.http.get<Array<string>>(this.baseUrl);
   }
 
   saveUser(user: User, userName = null) {

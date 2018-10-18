@@ -45,18 +45,18 @@ export class FormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.userService.saveUser(this.userForm.value, this.userName).subscribe(
-        (response: any) => {
-          if (response.message) {
-            this.ngFlashMessageService.showFlashMessage({
-              messages: [response.message],
-              type: 'success',
-              dismissible: true,
-              timeout: 5000
-            });
-            this.router.navigate(['../../']);
-          }
+      (response: any) => {
+        if (response.message) {
+          this.ngFlashMessageService.showFlashMessage({
+            messages: [response.message],
+            type: 'success',
+            dismissible: true,
+            timeout: 5000
+          });
+          this.router.navigate(['../../']);
         }
-      );
+      }
+    );
   }
 
   private buildForm() {

@@ -27,10 +27,6 @@ export class ListComponent implements OnInit {
       });
   }
 
-  addUser(): void {
-    this.router.navigate(['../add'], { relativeTo: this.route });
-  }
-
   goToUser(action: string, userName: string): void {
     this.router.navigate(['../', action, userName], { relativeTo: this.route });
   }
