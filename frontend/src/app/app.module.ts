@@ -10,8 +10,8 @@ import { FormComponent } from './users/form/form.component';
 import { UserService } from './users/user.service';
 import { routing } from './app.routing';
 import { ViewComponent } from './users/view/view.component';
+import { CustomHttpInterceptor } from './helpers/custom-http.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
-
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
   ],
   providers: [
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

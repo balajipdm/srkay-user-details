@@ -1,7 +1,7 @@
 {
   "name": "user-details-backend",
   "version": "1.0.0",
-  "description": "User Details Backend",
+  "description": "User Details Management Backend",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

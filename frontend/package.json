@@ -1,7 +1,7 @@
 {
   "name": "user-details-frontend",
   "version": "1.0.0",
-  "description": "User Details Frontend",
+  "description": "User Details Management Frontend",
   "author": "Balaji Peddamuthu (balaji.pdm@gmail.com)",
   "scripts": {
     "ng": "ng",
